@@ -4,7 +4,7 @@ import "./WeatherDetails.css";
 function WeatherDetails({ city, goBack }) {
     const [weatherData, setWeatherData] = useState(null); 
     const [error, setError] = useState(null); 
-    const API_KEY = "c9e7ce43867987d9d88903f2a9a9e142";
+    const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
     useEffect(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
@@ -24,7 +24,8 @@ function WeatherDetails({ city, goBack }) {
     return (
         <div className="weather-details">
             <div className="weather-box">
-                <h3>Weather Details for {city}</h3>
+            <h3>Weather Details for {city}{weatherData?.sys?.country ? `, ${weatherData.sys.country}` : ""}</h3>
+
 
                 {error ? (
                     <p style={{ color: "red" }}>{error}</p>

@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+REACT_APP_WEATHER_API_KEY=c9e7ce43867987d9d88903f2a9a9e142
+.env
+
